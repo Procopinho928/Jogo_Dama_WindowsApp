@@ -154,7 +154,8 @@ namespace JogoDama
                                             }
 
                                         }
-                                        AtaquePreto();
+                                       // AtaquePreto();
+                                     
                                         if (label3.Text == "PEÇA MORTA")
                                         {
                                             label3.Text = null;
@@ -183,7 +184,7 @@ namespace JogoDama
                     }
                 }
 
-
+                //PEÇAS BRANCAS
                 else if (label1.Text == "Vez das peças brancas")
                 {
                     //MessageBox.Show("VEZZZ DO BARNCO PORRA");
@@ -256,7 +257,7 @@ namespace JogoDama
                                     else
                                     {
 
-                                        AtaquePreto();
+                                        //AtaquePreto();
                                         if (label3.Text == "PEÇA MORTA")
                                         {
                                             label3.Text = null;
