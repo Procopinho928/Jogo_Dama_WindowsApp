@@ -297,9 +297,11 @@ namespace JogoDama
 
         public void AtaquePreto()
         {
+            //POSSIVEIS PERDEDORES
             int perdedor1 = array[0].TabIndex + 7;
             int perdedor3 = array[0].TabIndex - 9;
             int perdedor2 = array[0].TabIndex - 7;
+
             for (int i = 0; i < Controls.Count; i++)//VAI DE 0 ATE TODOS OS CONTROLES
             {
                 if (Controls[i] is Button button && button.TabIndex == perdedor1)//SE O CONTROLE FOR UM DA CLASSE BOTAO
