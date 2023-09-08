@@ -154,7 +154,7 @@ namespace JogoDama
                                             }
 
                                         }
-                                       // AtaquePreto();
+                                       AtaquePreto();
                                      
                                         if (label3.Text == "PEÇA MORTA")
                                         {
@@ -297,31 +297,27 @@ namespace JogoDama
 
         public void AtaquePreto()
         {
-            //POSSIVEIS PERDEDORES
+            //POSSIVEIS PERDEDORES (REFERENCIAL ARRAY[0])
             int perdedor1 = array[0].TabIndex + 7;
-            int perdedor3 = array[0].TabIndex - 9;
-            int perdedor2 = array[0].TabIndex - 7;
+            int perdedor2 = array[0].TabIndex - 9;
+            int perdedor3 = array[0].TabIndex - 7;
+
+            //POSSIVEIS PERDEDORES (REFERENCIAL ARRAY[1])
+            int perdedor4 = array[1].TabIndex - 7;
+            int perdedor5 = array[1].TabIndex + 9;
+            int perdedor6 = array[1].TabIndex + 7;
 
             for (int i = 0; i < Controls.Count; i++)//VAI DE 0 ATE TODOS OS CONTROLES
             {
-                if (Controls[i] is Button button && button.TabIndex == perdedor1)//SE O CONTROLE FOR UM DA CLASSE BOTAO
+                if (Controls[i] is Button button)//SE O CONTROLE FOR UM DA CLASSE BOTAO
                 {
-
-
-                    Button botao = (Button)Controls[i];
-                    string nomeBotao = botao.Name;
-
-                    if (botao.BackgroundImageLayout == ImageLayout.Center)//CASO SEJA UMA PEÇA BRANCA
+                    if (button.TabIndex == button.TabIndex - perdedor4)
                     {
-                        for (int j = 0; j <= perdedor.Length; j++)
+                        if (button.BackgroundImageLayout == ImageLayout.Center)//PEÇA BRANCA MORTA
                         {
-                            while (perdedor[j] != null)//OCUPADO
-                            {
-                                j++;
-                            }
-                            perdedor[j] = botao;
-                            perdedor[j].BackgroundImageLayout = ImageLayout.Tile;
-                            perdedor[j].Image = null;
+                            button.BackgroundImageLayout = ImageLayout.Tile;
+                            button.BackgroundImage = null;
+
                             array[1].BackgroundImage = Properties.Resources.pecas_pretas;
                             array[1].BackgroundImageLayout = ImageLayout.Stretch;
                             array[0].BackgroundImage = null;
@@ -330,101 +326,7 @@ namespace JogoDama
                             break;
                         }
                     }
-                    else if (botao.BackgroundImageLayout == ImageLayout.Stretch)
-                    {
-                        for (int j = 0; j <= perdedor.Length; j++)
-                        {
-                            while (perdedor[j] != null)//OCUPADO
-                            {
-                                j++;
-                            }
-                            perdedor[j] = botao;
-                            perdedor[j].BackgroundImageLayout = ImageLayout.Tile;
-                            perdedor[j].BackgroundImage = null;
-                            array[1].Image = Properties.Resources.pecas_brancas;
-                            array[1].BackgroundImageLayout = ImageLayout.Center;
-                            array[0].Image = null;
-                            array[0].BackgroundImageLayout = ImageLayout.Tile;
-                            label3.Text = "PEÇA MORTA";
-                            break;
-                        }
-                    }
                 }
-                else if (Controls[i] is Button button1 && button1.TabIndex == perdedor2)
-                {
-                    Button botao = (Button)Controls[i];
-                    string nomeBotao = botao.Name;
-
-                    if (botao.BackgroundImageLayout == ImageLayout.Stretch)//CASO SEJA UMA PEÇA PRETA
-                    {
-                        MessageBox.Show("OXII");
-                        for (int j = 0; j <= perdedor.Length; j++)
-                        {
-                            while (perdedor[j] != null)//OCUPADO
-                            {
-                                j++;
-                            }
-                            perdedor[j] = botao;
-                            perdedor[j].BackgroundImageLayout = ImageLayout.Tile;
-                            perdedor[j].BackgroundImage = null;
-                            array[1].Image = Properties.Resources.pecas_brancas;
-                            array[1].BackgroundImageLayout = ImageLayout.Center;
-                            array[0].Image = null;
-                            array[0].BackgroundImageLayout = ImageLayout.Tile;
-                            label3.Text = "PEÇA MORTA";
-                            break;
-                        }
-
-                    }
-                    else if (botao.BackgroundImageLayout == ImageLayout.Center)
-                    {
-
-                        for (int j = 0; j <= perdedor.Length; j++)
-                        {
-                            while (perdedor[j] != null)//OCUPADO
-                            {
-                                j++;
-                            }
-                            perdedor[j] = botao;
-                            perdedor[j].BackgroundImageLayout = ImageLayout.Tile;
-                            perdedor[j].Image = null;
-                            array[1].BackgroundImage = Properties.Resources.pecas_pretas;
-                            array[1].BackgroundImageLayout = ImageLayout.Stretch;
-                            array[0].BackgroundImage = null;
-                            array[0].BackgroundImageLayout = ImageLayout.Tile;
-                            label3.Text = "PEÇA MORTA";
-                            break;
-                        }
-                    }
-                    break;
-                }
-                /*else if (Controls[i] is Button button2 && button2.TabIndex == perdedor3)//SE O CONTROLE FOR UM DA CLASSE BOTAO
-                 {
-                     Button botao = (Button)Controls[i];
-                     string nomeBotao = botao.Name;
-
-                     if (botao.BackgroundImageLayout == ImageLayout.Center)//CASO SEJA UMA PEÇA BRANCA
-                     {
-                         for (int j = 0; j <= perdedor.Length; j++)
-                         {
-                             while (perdedor[j] != null)//OCUPADO
-                             {
-                                 j++;
-                             }
-                             perdedor[j] = botao;
-                             perdedor[j].BackgroundImageLayout = ImageLayout.Tile;
-                             perdedor[j].Image = null;
-                             array[1].BackgroundImage = Properties.Resources.pecas_pretas;
-                             array[1].BackgroundImageLayout = ImageLayout.Stretch;
-                             array[0].BackgroundImage = null;
-                             array[0].BackgroundImageLayout = ImageLayout.Tile;
-                             label3.Text = "PEÇA MORTA";
-                             break;
-                         }
-                     }
-                     break;
-                 }*/
-
             }
         }
 
